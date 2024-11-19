@@ -24,5 +24,7 @@ void display_all_histories(ClinicalHistoryList *list);
 void delete_clinical_history(ClinicalHistoryList *list, int index);
 void update_clinical_history(ClinicalHistoryList *list, int index);
 void display_clinical_history(struct ClinicalHistory *history);
+ClinicalHistoryNode *search_by_name(const ClinicalHistoryList *list, const char *name);
+void search_menu_option(const ClinicalHistoryList *list);
 
 #endif

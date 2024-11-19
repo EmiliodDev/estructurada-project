@@ -61,6 +61,7 @@ void free_clinical_history(struct ClinicalHistory *history);
 int read_int(const char *prompt);
 float read_float(const char *prompt);
 char *read_string_dynamic();
+void clear_buffer();
 
 enum BloodType read_blood_type();
 enum MaritalStatus read_marital_status();

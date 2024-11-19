@@ -35,19 +35,6 @@ void free_clinical_history(struct ClinicalHistory *history) {
     free(history);
 }
 
-// char* read_string_dynamic(const char *prompt) {
-//     printf("%s", prompt);
-//     char buffer[256];
-//     fgets(buffer, 256, stdin);
-//     buffer[strcspn(buffer, "\n")] = '\0';
-
-//     char *input = (char*) malloc(strlen(buffer) + 1);
-//     if (input) {
-//         strcpy(input, buffer);
-//     }
-//     return input;
-// }
-
 char *read_string_dynamic()
 {
     size_t capacity = 16;
