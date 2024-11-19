@@ -1,5 +1,11 @@
 #include "clinical_history.h"
 
+void clear_buffer()
+{
+    while (getchar() != '\n')
+        ;
+}
+
 struct ClinicalHistory* create_clinical_history() {
     struct ClinicalHistory *history = (struct ClinicalHistory*) malloc(sizeof(struct ClinicalHistory));
     if (!history) {
@@ -29,32 +35,77 @@ void free_clinical_history(struct ClinicalHistory *history) {
     free(history);
 }
 
-char* read_string_dynamic(const char *prompt) {
-    printf("%s", prompt);
-    char buffer[256];
-    fgets(buffer, 256, stdin);
-    buffer[strcspn(buffer, "\n")] = '\0';
+// char* read_string_dynamic(const char *prompt) {
+//     printf("%s", prompt);
+//     char buffer[256];
+//     fgets(buffer, 256, stdin);
+//     buffer[strcspn(buffer, "\n")] = '\0';
 
-    char *input = (char*) malloc(strlen(buffer) + 1);
-    if (input) {
-        strcpy(input, buffer);
+//     char *input = (char*) malloc(strlen(buffer) + 1);
+//     if (input) {
+//         strcpy(input, buffer);
+//     }
+//     return input;
+// }
+
+char *read_string_dynamic()
+{
+    size_t capacity = 16;
+    size_t large = 0;
+    char *string = malloc(capacity);
+
+    if (string == NULL)
+    {
+        perror("Error to asign memory");
+        exit(EXIT_FAILURE);
     }
-    return input;
+
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+    {
+        if (large + 1 >= capacity)
+        {
+            capacity *= 2;
+            char *newBuffer = realloc(string, capacity);
+            if (newBuffer == NULL)
+            {
+                free(string);
+                perror("Error to expand memory");
+                exit(EXIT_FAILURE);
+            }
+            string = newBuffer;
+        }
+        string[large++] = (char)c;
+    }
+    string[large] = '\0';
+    return string;
 }
 
 int read_int(const char *prompt) {
     int value;
+    char buffer[256];
+
     printf("%s", prompt);
-    scanf("%d", &value);
-    getchar();
+    fgets(buffer, sizeof(buffer), stdin);
+
+    buffer[strcspn(buffer, "\n")] = '\0';
+
+    sscanf(buffer, "%d", &value);
+
     return value;
 }
 
 float read_float(const char *prompt) {
     float value;
+    char buffer[256];
+
     printf("%s", prompt);
-    scanf("%f", &value);
-    getchar();
+    fgets(buffer, sizeof(buffer), stdin);
+
+    buffer[strcspn(buffer, "\n")] = '\0';
+
+    sscanf(buffer, "%f", &value);
+
     return value;
 }
 

@@ -15,10 +15,11 @@ void menu(ClinicalHistoryList *list) {
 
         if (scanf("%d", &choice) != 1) {
             printf("Invalid input. Please insert a number.\n");
-
             while (getchar() != '\n');
             continue;
         }
+        while (getchar() != '\n')
+            ;
 
         switch (choice) {
             case 1:
@@ -30,6 +31,8 @@ void menu(ClinicalHistoryList *list) {
             case 3:
                 printf("Insert the index of the history to update: ");
                 if(scanf("%d", &index) == 1) {
+                    while (getchar() != '\n')
+                        ;
                     update_clinical_history(list, index);
                 } else {
                     printf("Invalid value. You must insert a number.\n");
@@ -39,6 +42,8 @@ void menu(ClinicalHistoryList *list) {
             case 4:
                 printf("Insert the index of the history to delete: ");
                 if (scanf("%d", &index) == 1) {
+                    while (getchar() != '\n')
+                        ;
                     delete_clinical_history(list, index);
                 } else {
                     printf("Invalid value. You must insert a number.\n");

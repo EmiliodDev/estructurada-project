@@ -12,7 +12,7 @@ void display_all_histories(ClinicalHistoryList *list) {
 
     printf("=== Clinical History List ===\n");
     while(current != NULL) {
-        printf("\nHistory #%d:\n", i);
+        printf("\nHistory #%d:\n", i + 1);
         display_clinical_history(current->history);
         current = current->next;
         i++;

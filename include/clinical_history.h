@@ -5,9 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_NAME_LENGTH 100
-#define MAX_PHONE_LENGTH 15
-
 enum BloodType { A_POS, A_NEG, B_POS, B_NEG, O_POS, O_NEG, AB_POS, AB_NEG };
 enum MaritalStatus { SINGLE, MARRIED, DIVORCED, WIDOWED };
 
@@ -18,8 +15,8 @@ struct Date {
 };
 
 struct Contact {
-    char Name[MAX_NAME_LENGTH];
-    char Phone_Number[MAX_PHONE_LENGTH];
+    char *Name;
+    char *Phone_Number;
 };
 
 struct Treatments {
@@ -39,7 +36,7 @@ struct History {
 };
 
 struct PersonalInfo {
-    char Name[MAX_NAME_LENGTH];
+    char *Name;
     int Age;
     struct Date Birth_Date;
     float Weight;
@@ -63,7 +60,7 @@ void free_clinical_history(struct ClinicalHistory *history);
 
 int read_int(const char *prompt);
 float read_float(const char *prompt);
-char* read_string_dynamic(const char *prompt);
+char *read_string_dynamic();
 
 enum BloodType read_blood_type();
 enum MaritalStatus read_marital_status();
