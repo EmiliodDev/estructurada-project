@@ -28,7 +28,7 @@ make --version
 ```
 
 2. Asegurate de tener instalado [gcc](https://gcc.gnu.org/).
-3. Dirigite al directorio raiz del proyecto.
+3. Dirigete al directorio raiz del proyecto.
 4. Ejecuta make:
     ```bash
     make
